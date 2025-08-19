@@ -6,19 +6,18 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 09:23:45 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/19 09:34:45 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:50:09 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	int	length;
+	int	i;
 
-	length = 0;
-	while (*str != '\0')
+	i = 0;
+	while (str[i] != '\0')
 	{
-		length++;
-		*str++;
+		i++;
 	}
-	return (length);
+	return (i);
 }
