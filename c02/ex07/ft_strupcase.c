@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 16:20:40 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/20 18:22:00 by aerraji          ###   ########.fr       */
+/*   Created: 2025/08/20 18:39:52 by aerraji           #+#    #+#             */
+/*   Updated: 2025/08/20 19:02:02 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+char	*ft_strupcase(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '\0')
-	{
-		return (1);
-	}
 	while (str[i] != '\0')
 	{
-		if ((str[i] < 'A') || (str[i] > 'Z' && str[i] < 'a') || (str[i] > 'z'))
+		if ((str[i] >= 'a') && (str[i] <= 'z'))
 		{
-			return (0);
+			str[i] = str[i] - 32;
 		}
 		i++;
 	}
-	return (1);
+	return (str);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 16:20:40 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/20 18:22:00 by aerraji          ###   ########.fr       */
+/*   Created: 2025/08/20 18:37:34 by aerraji           #+#    #+#             */
+/*   Updated: 2025/08/20 19:01:04 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_alpha(char *str)
+int	ft_str_is_printable(char *str)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ int	ft_str_is_alpha(char *str)
 	}
 	while (str[i] != '\0')
 	{
-		if ((str[i] < 'A') || (str[i] > 'Z' && str[i] < 'a') || (str[i] > 'z'))
+		if (str[i] < 33 || str[i] > 126)
 		{
 			return (0);
 		}
