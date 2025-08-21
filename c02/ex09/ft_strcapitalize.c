@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 18:37:34 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/21 12:53:51 by aerraji          ###   ########.fr       */
+/*   Created: 2025/08/21 11:04:03 by aerraji           #+#    #+#             */
+/*   Updated: 2025/08/21 12:51:57 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_printable(char *str)
+char	*ft_strcapitalize(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '\0')
-	{
-		return (1);
-	}
 	while (str[i] != '\0')
 	{
-		if (str[i] < 32 || str[i] > 126)
+		if (i == 0 && (str[i] >= 'a' && str[i] <= 'z'))
 		{
-			return (0);
+			str[i] = str[i] - 32;
+		}
+		if (((str[i - 1] < '0') || (str[i - 1] < 'A' && str[i - 1] > '9')
+				|| ((str[i - 1] > 'Z' && str[i - 1] < 'a')) || (str[i - 1] > 'z'))
+				&& (str[i] >= 'a' && str[i] <= 'z'))
+		{
+			str[i] = str[i] - 32;
 		}
 		i++;
 	}
-	return (1);
+	return (str);
 }

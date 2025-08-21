@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 14:38:24 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/20 15:16:17 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/21 12:56:21 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i] = '\0';
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
