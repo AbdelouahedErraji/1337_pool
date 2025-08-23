@@ -6,9 +6,38 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 11:04:03 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/22 11:51:53 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/23 13:11:32 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	is_uppercase(char c)
+{
+	if (c >= 'A' && c <= 'Z')
+	{
+		return (1);
+	}
+	return (0);
+}
+
+int	is_lowercase(char c)
+{
+	if (c >= 'a' && c <= 'z')
+	{
+		return (1);
+	}
+	return (0);
+}
+
+int	is_special(char c)
+{
+	if (!((c >= '0' && c <= '9')
+			|| (c >= 'A' && c <= 'Z')
+			|| (c >= 'a' && c <= 'z')))
+	{
+		return (1);
+	}
+	return (0);
+}
 
 char	*ft_strcapitalize(char *str)
 {
@@ -17,16 +46,17 @@ char	*ft_strcapitalize(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (i == 0 && (str[i] >= 'a' && str[i] <= 'z'))
+		if (i == 0 && is_lowercase(str[i]))
 		{
 			str[i] = str[i] - 32;
 		}
-		if (((str[i - 1] < '0') || (str[i - 1] > '9' && str[i - 1] < 'A')
-				|| ((str[i - 1] > 'Z' && str[i - 1] < 'a'))
-				|| (str[i - 1] > 'z'))
-			&& (str[i] >= 'a' && str[i] <= 'z'))
+		else if (i > 0 && is_special(str[i - 1]) && is_lowercase(str[i]))
 		{
 			str[i] = str[i] - 32;
+		}
+		else if (is_uppercase(str[i]))
+		{
+			str[i] = str[i] + 32;
 		}
 		i++;
 	}
