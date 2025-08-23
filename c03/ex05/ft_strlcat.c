@@ -1,32 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 11:13:23 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/23 15:51:07 by aerraji          ###   ########.fr       */
+/*   Created: 2025/08/23 16:12:36 by aerraji           #+#    #+#             */
+/*   Updated: 2025/08/23 16:45:58 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+int	length(char *c)
 {
-	unsigned int	d;
-	unsigned int	i;
+	int	i;
 
 	i = 0;
-	d = 0;
-	while (*(dest + d))
+	while (*(c + i))
 	{
-		d++;
+		i++;
 	}
-	while (*(src + i))
+	return (i);
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	unsigned int	sl;
+	unsigned int	dl;
+	unsigned int	i;
+	unsigned int	d;
+
+	sl = length(src);
+	dl = length(dest);
+	i = 0;
+	if (size <= dl)
+	{
+		return (size + sl);
+	}
+	d = dl;
+	while (*(src + i) && d + 1 < size)
 	{
 		*(dest + d) = *(src + i);
 		i++;
 		d++;
 	}
 	*(dest + d) = '\0';
-	return (dest);
+	return (sl + dl);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 11:13:23 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/23 15:51:07 by aerraji          ###   ########.fr       */
+/*   Created: 2025/08/23 15:45:30 by aerraji           #+#    #+#             */
+/*   Updated: 2025/08/23 15:50:25 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	unsigned int	d;
 	unsigned int	i;
@@ -21,7 +21,7 @@ char	*ft_strcat(char *dest, char *src)
 	{
 		d++;
 	}
-	while (*(src + i))
+	while (*(src + i) && i < nb)
 	{
 		*(dest + d) = *(src + i);
 		i++;
