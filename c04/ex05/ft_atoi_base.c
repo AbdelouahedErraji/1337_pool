@@ -12,25 +12,36 @@
 
 #include <stdio.h>
 
-int	is_space(char c)
-{
-	if (c == 32 || c == '\n' || c == '\t')
-	{
-		return (1);
-	}
-	return (0);
-}
-
-int	is_valid(char c, char *base)
+int	check_base(char *base)
 {
 	int	i;
+	int	t;
 
 	i = 0;
+	t = 0;
 	while (base[i])
 	{
-		if (base[i] == c)
-			return (1);
+		if (base[i] == 43 || base[i] == 45 || is_space(base[i]))
+			return (0);
+		while (t < i)
+		{
+			if (base[i] == base[t])
+				return (0);
+			t++;
+		}
+		t = 0;
 		i++;
+	}
+	if (i < 2)
+		return (0);
+	return (i);
+}
+
+int	is_space(char c)
+{
+	if (c == 32 || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r')
+	{
+		return (1);
 	}
 	return (0);
 }
@@ -49,46 +60,33 @@ int	base_number(char c, char *base)
 	return (-1);
 }
 
-int	return_val(int i, char *str, char *base, int base_size)
-{
-	int	d;
-
-	d = 0;
-	while (str[i])
-	{
-		if (!is_valid(str[i], base))
-			break ;
-		else
-		{
-			d = d * base_size + base_number(str[i], base);
-		}
-		i++;
-	}
-	return d;
-}
-
 int	ft_atoi_base(char *str, char *base)
 {
 	int	i;
 	int	m;
 	int	d;
 	int	base_size;
+	int	idx;
 
 	i = 0;
 	m = 0;
 	d = 0;
-	base_size = 0;
-	while (is_space(*(str + i)))
+	base_size = check_base(base);
+	if (base_size == 0)
+		return (0);
+	while (is_space(str[i]))
 		i++;
-	while (*(str + i) == 45 || *(str + i) == 43)
+	while (str[i] == 45 || str[i] == 43)
 	{
 		if (*(str + i) == 45)
 			m++;
 		i++;
 	}
-	while (base[base_size])
-		base_size++;
-	d = return_val(i, str, base, base_size);
+	while (idx == base_number(str[i], base) != -1)
+	{
+		d = d * base_size + idx;
+		i++;
+	}
 	if (m % 2 != 0)
 		d = -d;
 	return (d);

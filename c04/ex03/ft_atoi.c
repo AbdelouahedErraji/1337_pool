@@ -10,18 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_alpha(char c)
-{
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
-	{
-		return (1);
-	}
-	return (0);
-}
-
 int	is_space(char c)
 {
-	if (c == 32 || c == '\n' || c == '\t')
+	if (c == 32 || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r')
 	{
 		return (1);
 	}
@@ -42,15 +33,15 @@ int	return_val(char *str, int i, int m)
 	int	d;
 
 	d = 0;
-	while (*(str + i))
+	while (str[i])
 	{
-		if (!is_num(*(str + i)))
+		if (!is_num(str[i]))
 		{
 			break ;
 		}
 		else
 		{
-			d = d * 10 + *(str + i) - '0';
+			d = d * 10 + str[i] - '0';
 		}
 		i++;
 	}
@@ -73,13 +64,13 @@ int	ft_atoi(char *str)
 	i = 0;
 	m = 0;
 	d = 0;
-	while (is_space(*(str + i)))
+	while (is_space(str[i]))
 	{
 		i++;
 	}
-	while (*(str + i) == 45 || *(str + i) == 43)
+	while (str[i] == 45 || str[i] == 43)
 	{
-		if (*(str + i) == 45)
+		if (str[i] == 45)
 		{
 			m++;
 		}
