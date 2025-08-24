@@ -6,13 +6,13 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 13:41:19 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/23 16:52:57 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/24 13:07:58 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	put_hex(char c)
+void	put_hex(unsigned char c)
 {
 	char	a;
 
@@ -50,7 +50,7 @@ void	ft_putstr_non_printable(char *str)
 		else
 		{
 			write(1, "\\", 1);
-			put_hex(*(str + i));
+			put_hex((unsigned char)str[i]);
 		}
 		i++;
 	}
