@@ -6,11 +6,20 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 16:59:57 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/24 18:34:44 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/25 07:43:21 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+int	is_space(char c)
+{
+	if (c == 32 || c == '\n'
+		|| c == '\t' || c == '\v'
+		|| c == '\f' || c == '\r')
+	{
+		return (1);
+	}
+	return (0);
+}
 
 int	check_base(char *base)
 {
@@ -21,7 +30,7 @@ int	check_base(char *base)
 	t = 0;
 	while (base[i])
 	{
-		if (base[i] == 43 || base[i] == 45 || is_space(base[i]))
+		if (base[i] == '+' || base[i] == '-' || is_space(base[i]))
 			return (0);
 		while (t < i)
 		{
@@ -37,57 +46,46 @@ int	check_base(char *base)
 	return (i);
 }
 
-int	is_space(char c)
+int	number(char *str, char *base, int base_size, int i)
 {
-	if (c == 32 || c == '\n' || c == '\t' || c == '\v' || c == '\f' || c == '\r')
-	{
-		return (1);
-	}
-	return (0);
-}
+	int	j;
+	int	res;
 
-int	base_number(char c, char *base)
-{
-	int	i;
-
-	i = 0;
-	while (base[i])
+	res = 0;
+	while (str[i])
 	{
-		if (base[i] == c)
-			return (i);
+		j = 0;
+		while (j < base_size && base[j] != str[i])
+			j++;
+		if (j == base_size)
+			break ;
+		res = res * base_size + j;
 		i++;
 	}
-	return (-1);
+	return (res);
 }
 
 int	ft_atoi_base(char *str, char *base)
 {
 	int	i;
-	int	m;
+	int	s;
 	int	d;
 	int	base_size;
-	int	idx;
 
 	i = 0;
-	m = 0;
+	s = 1;
 	d = 0;
 	base_size = check_base(base);
 	if (base_size == 0)
 		return (0);
 	while (is_space(str[i]))
 		i++;
-	while (str[i] == 45 || str[i] == 43)
+	while (str[i] == '+' || str[i] == '-')
 	{
-		if (*(str + i) == 45)
-			m++;
+		if (str[i] == '-')
+			s *= -1;
 		i++;
 	}
-	while (idx == base_number(str[i], base) != -1)
-	{
-		d = d * base_size + idx;
-		i++;
-	}
-	if (m % 2 != 0)
-		d = -d;
-	return (d);
+	d = number(str, base, base_size, i);
+	return (d * s);
 }
