@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 15:51:40 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/25 10:58:36 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/25 13:28:22 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,15 @@ char	*ft_strstr(char *str, char *to_find)
 	l = length(to_find);
 	if (l == 0)
 		return (str);
-	else
+	while (str[i])
 	{
-		while (str[i])
+		if (str[i] == to_find[0])
 		{
-			if (str[i] == to_find[0])
-			{
-				d = found_chars(to_find, &str[i]);
-				if (l == d)
-					return (&str[i]);
-			}
-			i++;
+			d = found_chars(to_find, &str[i]);
+			if (l == d)
+				return (&str[i]);
 		}
-		return (NULL);
+		i++;
 	}
+	return (0);
 }
