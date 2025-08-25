@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 20:54:30 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/24 16:54:56 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/25 07:54:28 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,17 @@ void	ft_putnbr_base(int nbr, char *base)
 
 	i = 0;
 	base_size = check_base(base);
+	if (base_size == 0)
+		return ;
 	if (nbr < 0)
 	{
 		write(1, "-", 1);
+		if (nbr == -2147483648)
+		{
+			write(1, "2", 1);
+			nbr = -147483648;
+		}
 		nbr *= -1;
 	}
-	if (base_size == 0)
-		return ;
 	putnbr_base(nbr, base, base_size);
 }
