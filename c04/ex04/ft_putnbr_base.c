@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 20:54:30 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/25 07:54:28 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/25 09:54:56 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ void	putnbr_base(int nbr, char *base, int base_size)
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	base_size;
-	int	i;
 
-	i = 0;
 	base_size = check_base(base);
 	if (base_size == 0)
 		return ;
