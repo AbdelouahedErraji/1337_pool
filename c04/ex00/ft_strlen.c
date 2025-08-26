@@ -6,14 +6,13 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:10:16 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/23 17:14:05 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/26 10:34:00 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strlen(char *str)
 {
-	while (*str)
-	{
-		return (1 + ft_strlen(str + 1));
-	}
+	if (*str == '\0')
+		return (0);
+	return (1 + ft_strlen(str + 1));
 }

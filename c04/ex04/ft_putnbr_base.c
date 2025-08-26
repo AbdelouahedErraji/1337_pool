@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 20:54:30 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/25 09:54:56 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/26 14:23:43 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,18 @@ int	check_base(char *base)
 
 void	putnbr_base(int nbr, char *base, int base_size)
 {
-	if (nbr >= base_size)
-		putnbr_base(nbr / base_size, base, base_size);
-	write(1, &base[nbr % base_size], 1);
+	unsigned int	n;
+
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		n = -(unsigned int)nbr;
+	}
+	else
+		n = (unsigned int)nbr;
+	if (n >= base_size)
+		putnbr_base(n / base_size, base, base_size);
+	write(1, &base[n % base_size], 1);
 }
 
 void	ft_putnbr_base(int nbr, char *base)
@@ -51,15 +60,5 @@ void	ft_putnbr_base(int nbr, char *base)
 	base_size = check_base(base);
 	if (base_size == 0)
 		return ;
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-		if (nbr == -2147483648)
-		{
-			write(1, "2", 1);
-			nbr = -147483648;
-		}
-		nbr *= -1;
-	}
 	putnbr_base(nbr, base, base_size);
 }
