@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 20:54:30 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/26 14:23:43 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/26 15:58:59 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	putnbr_base(int nbr, char *base, int base_size)
 	}
 	else
 		n = (unsigned int)nbr;
-	if (n >= base_size)
+	if (n >= (unsigned int)base_size)
 		putnbr_base(n / base_size, base, base_size);
 	write(1, &base[n % base_size], 1);
 }
