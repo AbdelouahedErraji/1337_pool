@@ -1,24 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/27 20:06:16 by aerraji           #+#    #+#             */
+/*   Updated: 2025/08/27 20:11:57 by aerraji          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_print_rev(char *str, int i)
-{
-	if (str[i])
-	{
-		ft_print_rev(str, i + 1);
-		write(1, &str[i], 1);
-	}
-}
-
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	int	i;
+	int	j;
 
-	i = 1;
-	while(i < argc)
+	i = argc - 1;
+	while (i > 0)
 	{
-		ft_print_rev(argv[i], 0);
+		j = 0;
+		while (argv[i][j])
+		{
+			write(1, &argv[i][j], 1);
+			j++;
+		}
 		write(1, "\n", 1);
-		i++;
+		i--;
 	}
-	return 0;
+	return (0);
 }

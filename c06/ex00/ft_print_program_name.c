@@ -1,14 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/27 20:00:01 by aerraji           #+#    #+#             */
+/*   Updated: 2025/08/27 21:13:46 by aerraji          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	int	i;
 
+	i = argc;
 	i = 0;
-	while(argv[0][i])
+	while (argv[0][i])
 	{
 		write(1, &argv[0][i], 1);
 		i++;
 	}
 	write(1, "\n", 1);
+	return (0);
 }
