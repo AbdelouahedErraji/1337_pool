@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 08:53:52 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/28 09:14:49 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/28 09:58:48 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_strdup(char *src)
 {
-	int	i;
 	char	*dup;
+	int		i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while (src[i])
 	{
 		i++;
 	}
