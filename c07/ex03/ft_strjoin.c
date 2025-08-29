@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 09:42:54 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/29 11:51:27 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/08/29 11:53:52 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	length(int size, char **strs)
 	return (strs_size);
 }
 
-char	*ft_join(int size, char **strs, char *sep, char *res)
+void ft_join(int size, char **strs, char *sep, char *res)
 {
 	int	i;
 	int	e;
@@ -55,7 +55,6 @@ char	*ft_join(int size, char **strs, char *sep, char *res)
 		i++;
 	}
 	res[e] = '\0';
-	return (res);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -79,6 +78,6 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	res = malloc(strs_size + sep_size * (size - 1) + 1);
 	if (!res)
 		return (NULL);
-	res = ft_join(size, strs, sep, res);
+	ft_join(size, strs, sep, res);
 	return (res);
 }
