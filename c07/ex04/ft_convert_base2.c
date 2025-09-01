@@ -10,6 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int ft_atoi_base(char *nbr, char *base, int base_size)
+{
+	int	d;
+	int	i;
+	int	j;
+	int	s;
+
+	d = 0;
+	i = 0;
+	s = 1;
+	while (nbr[i] == '+' || nbr[i] == '-')
+	{
+		if (nbr[i] == '-')
+			s *= -1;
+		i++;
+	}
+	while (nbr[i])
+	{
+		j = 0;
+		while (base[j] && nbr[i] != base[j])
+			j++;
+		if (j == base_size)
+			break;
+		d = d * base_size + j;
+		i++;
+	}
+	return d * s;
+}
+
 int	ft_length(char *base)
 {
 	int	i;
