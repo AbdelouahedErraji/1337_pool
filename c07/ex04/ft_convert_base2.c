@@ -6,11 +6,11 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 13:38:42 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/29 14:18:41 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/09/01 12:26:51 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_atoi_base(char *nbr, char *base, int base_size)
+int	ft_atoi_base(char *nbr, char *base, int base_size)
 {
 	int	d;
 	int	i;
@@ -32,11 +32,11 @@ int ft_atoi_base(char *nbr, char *base, int base_size)
 		while (base[j] && nbr[i] != base[j])
 			j++;
 		if (j == base_size)
-			break;
+			break ;
 		d = d * base_size + j;
 		i++;
 	}
-	return d * s;
+	return (d * s);
 }
 
 int	ft_length(char *base)

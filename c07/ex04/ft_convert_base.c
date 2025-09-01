@@ -6,18 +6,18 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 13:37:03 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/29 14:20:15 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/09/01 14:05:25 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+//#include <stdio.h>
 
 int	check_base(char *base);
 
-int ft_atoi_base(char *nbr, char *base, int base_size);
+int	ft_atoi_base(char *nbr, char *base, int base_size);
 
-char	*ft_nbr_base(char *res, int nbr, char *base, int base_size, int i)
+char	*ft_nbr_base(char *res, int nbr, char *base, int i)
 {
 	unsigned int	n;
 
@@ -28,18 +28,19 @@ char	*ft_nbr_base(char *res, int nbr, char *base, int base_size, int i)
 	}
 	else
 		n = (unsigned int)nbr;
-	if (n >= (unsigned int)base_size)
+	if (n >= (unsigned int)check_base(base))
 	{
-		ft_nbr_base(res, n / base_size, base, base_size, i - 1);
+		ft_nbr_base(res, n / check_base(base), base, i - 1);
 	}
-	res[i] = base[n % base_size];
-	return res;
+	res[i] = base[n % check_base(base)];
+	return (res);
 }
 
-int ft_res_size(int nbr, char *base, int base_size)
+int	ft_res_size(int nbr, char *base, int base_size)
 {
-	int size = 0;
+	int	size;
 
+	size = 0;
 	if (nbr < 0)
 	{
 		size++;
@@ -56,34 +57,33 @@ int ft_res_size(int nbr, char *base, int base_size)
 		return (size + ft_res_size(nbr / base_size, base, base_size));
 	}
 	size++;
-	return size;
+	return (size);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int from = check_base(base_from);
-	int to_size = check_base(base_to);
-	if (!(to_size && from))
+	int		base_from_size;
+	int		base_to_size;
+	int		nbr_from;
+	int		res_size;
+	char	*res;
+
+	base_from_size = check_base(base_from);
+	base_to_size = check_base(base_to);
+	if (!(base_to_size && base_from_size))
 	{
-		return NULL;
+		return (NULL);
 	}
-
-	int	nbr_from = ft_atoi_base(nbr, base_from, from);
-	int res_size = ft_res_size(nbr_from, base_to, to_size);
-
-	printf("base from: %d\n", from);
-	printf("base to size: %d\n", to_size);
-	printf("nbr from: %d\n", nbr_from);
-	printf("result size: %d\n", res_size);
-
-	char *res = malloc(res_size);
-	ft_nbr_base(res, nbr_from, base_to, to_size, res_size - 1);
-	return res;
+	nbr_from = ft_atoi_base(nbr, base_from, base_from_size);
+	res_size = ft_res_size(nbr_from, base_to, base_to_size);
+	res = malloc(res_size);
+	ft_nbr_base(res, nbr_from, base_to, res_size - 1);
+	return (res);
 }
 
-int main()
-{
-	char *res = ft_convert_base("-3648", "0123456789", "0123456789abcdef");
-	printf("%s\n", res);
-	return 0;
-}
+//int main()
+//{
+//	char *res = ft_convert_base("-3648", "0123456789", "0123456789abcdef");
+//	printf("%s\n", res);
+//	return (0);
+//}
