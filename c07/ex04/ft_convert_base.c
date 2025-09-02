@@ -6,21 +6,40 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 13:37:03 by aerraji           #+#    #+#             */
-/*   Updated: 2025/09/01 14:05:25 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/09/02 09:45:02 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-//#include <stdio.h>
 
-int	check_base(char *base);
+int	is_special(char *base);
+
+int	is_duplicates(char *base, int size);
+
+int	ft_length(char *base);
 
 int	ft_atoi_base(char *nbr, char *base, int base_size);
+
+int	check_base(char *base)
+{
+	int	size;
+
+	size = ft_length(base);
+	if (size < 2)
+		return (0);
+	if (is_special(base) == 1)
+		return (0);
+	if (is_duplicates(base, size) == 1)
+		return (0);
+	return (size);
+}
 
 char	*ft_nbr_base(char *res, int nbr, char *base, int i)
 {
 	unsigned int	n;
+	int				base_size;
 
+	base_size = check_base(base);
 	if (nbr < 0)
 	{
 		res[0] = '-';
@@ -28,11 +47,11 @@ char	*ft_nbr_base(char *res, int nbr, char *base, int i)
 	}
 	else
 		n = (unsigned int)nbr;
-	if (n >= (unsigned int)check_base(base))
+	if (n >= (unsigned int)base_size)
 	{
-		ft_nbr_base(res, n / check_base(base), base, i - 1);
+		ft_nbr_base(res, n / base_size, base, i - 1);
 	}
-	res[i] = base[n % check_base(base)];
+	res[i] = base[n % base_size];
 	return (res);
 }
 
@@ -76,14 +95,10 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	}
 	nbr_from = ft_atoi_base(nbr, base_from, base_from_size);
 	res_size = ft_res_size(nbr_from, base_to, base_to_size);
-	res = malloc(res_size);
+	res = malloc(res_size + 1);
+	if (!res)
+		return (NULL);
+	res[res_size] = '\0';
 	ft_nbr_base(res, nbr_from, base_to, res_size - 1);
 	return (res);
 }
-
-//int main()
-//{
-//	char *res = ft_convert_base("-3648", "0123456789", "0123456789abcdef");
-//	printf("%s\n", res);
-//	return (0);
-//}

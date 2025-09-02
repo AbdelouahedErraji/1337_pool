@@ -6,9 +6,16 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 13:38:42 by aerraji           #+#    #+#             */
-/*   Updated: 2025/09/01 12:26:51 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/09/02 09:42:39 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	is_char_special(char c)
+{
+	if (c == ' ' || (c >= 9 && c <= 13) || c == '+' || c == '-')
+		return (1);
+	return (0);
+}
 
 int	ft_atoi_base(char *nbr, char *base, int base_size)
 {
@@ -20,7 +27,7 @@ int	ft_atoi_base(char *nbr, char *base, int base_size)
 	d = 0;
 	i = 0;
 	s = 1;
-	while (nbr[i] == '+' || nbr[i] == '-')
+	while (is_char_special(nbr[i]))
 	{
 		if (nbr[i] == '-')
 			s *= -1;
@@ -58,11 +65,11 @@ int	is_special(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == ' ' || base[i] < 14 || base[i] == '+' || base[i] == '-')
+		if (is_char_special(base[i]))
 			return (1);
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
 int	is_duplicates(char *base, int size)
@@ -82,19 +89,5 @@ int	is_duplicates(char *base, int size)
 		}
 		i++;
 	}
-	return (-1);
-}
-
-int	check_base(char *base)
-{
-	int	size;
-
-	size = ft_length(base);
-	if (size < 2)
-		return (-1);
-	if (is_special(base) == 1)
-		return (-1);
-	if (is_duplicates(base, size) == 1)
-		return (-1);
-	return (size);
+	return (0);
 }
