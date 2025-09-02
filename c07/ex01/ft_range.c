@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 09:23:09 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/29 09:23:11 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/09/02 13:35:47 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ int	*ft_range(int min, int max)
 	int	*ptr;
 
 	if (min >= max)
-	{
 		return (NULL);
-	}
-	ptr = malloc((max - min) * 4);
+	ptr = malloc((max - min) * sizeof(int));
 	if (!ptr)
-	{
 		return (NULL);
-	}
 	i = 0;
 	while (min < max)
 	{
