@@ -6,7 +6,7 @@
 /*   By: aerraji <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/29 09:42:54 by aerraji           #+#    #+#             */
-/*   Updated: 2025/08/29 11:53:52 by aerraji          ###   ########.fr       */
+/*   Updated: 2025/09/02 12:52:10 by aerraji          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	length(int size, char **strs)
 	return (strs_size);
 }
 
-void ft_join(int size, char **strs, char *sep, char *res)
+void	ft_join(int size, char **strs, char *sep, char *res)
 {
 	int	i;
 	int	e;
